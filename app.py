@@ -59,6 +59,14 @@ meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto
 ventas = np.random.randint(1000, 5000, size=12)
 df_ventas = pd.DataFrame({"Mes": meses, "Ventas": ventas})
 
+# Rendimiento de empleados por departamento
+# Se genera una tabla con rendimiento ficticio por departamento
+departamentos = ["Ventas", "Soporte", "Desarrollo", "Marketing"]
+rendimiento = np.random.randint(50, 100, size=len(departamentos))
+df_rendimiento = pd.DataFrame({"Departamento": departamentos, "Rendimiento": rendimiento})
+
+col1, col2 = st.columns(2)
+
 # Gráfico de Ventas Mensuales
 #
 # Se crea un gráfico de líneas con matplotlib.
@@ -66,20 +74,15 @@ df_ventas = pd.DataFrame({"Mes": meses, "Ventas": ventas})
 # Se muestra con st.pyplot(fig).
 # Resultado: Un gráfico de líneas mostrando la evolución de las ventas.
 #
-st.subheader("Ventas Mensuales")
-fig, ax = plt.subplots()
-ax.plot(df_ventas["Mes"], df_ventas["Ventas"], marker="o", color=color_grafico)
-ax.set_xlabel("Mes")
-ax.set_ylabel("Ventas")
-ax.set_title("Tendencia de Ventas Mensuales")
-plt.xticks(rotation=45)
-st.pyplot(fig)
-
-# Rendimiento de empleados por departamento
-# Se genera una tabla con rendimiento ficticio por departamento
-departamentos = ["Ventas", "Soporte", "Desarrollo", "Marketing"]
-rendimiento = np.random.randint(50, 100, size=len(departamentos))
-df_rendimiento = pd.DataFrame({"Departamento": departamentos, "Rendimiento": rendimiento})
+with col1:
+    st.subheader("Ventas Mensuales")
+    fig, ax = plt.subplots()
+    ax.plot(df_ventas["Mes"], df_ventas["Ventas"], marker="o", color=color_grafico)
+    ax.set_xlabel("Mes")
+    ax.set_ylabel("Ventas")
+    ax.set_title("Tendencia de Ventas Mensuales", fontsize=12)  # Tamaño reducido
+    plt.xticks(rotation=45)
+    st.pyplot(fig)
 
 # Gráfico de Barras de Rendimiento de Empleados
 #
@@ -88,13 +91,14 @@ df_rendimiento = pd.DataFrame({"Departamento": departamentos, "Rendimiento": ren
 # Se muestra con st.pyplot(fig).
 # Resultado: Un gráfico de barras mostrando el rendimiento de cada departamento.
 #
-st.subheader("Rendimiento de Empleados")
-fig, ax = plt.subplots()
-ax.bar(df_rendimiento["Departamento"], df_rendimiento["Rendimiento"], color=color_grafico)
-ax.set_xlabel("Departamento")
-ax.set_ylabel("Rendimiento (%)")
-ax.set_title("Rendimiento por Departamento")
-st.pyplot(fig)
+with col2:
+    st.subheader("Rendimiento de Empleados")
+    fig, ax = plt.subplots()
+    ax.bar(df_rendimiento["Departamento"], df_rendimiento["Rendimiento"], color=color_grafico)
+    ax.set_xlabel("Departamento")
+    ax.set_ylabel("Rendimiento (%)")
+    ax.set_title("Rendimiento por Departamento", fontsize=12)  # Tamaño reducido
+    st.pyplot(fig)
 
 # Distribución geográfica de clientes
 # Se generan 10 ubicaciones aleatorias de clientes.
