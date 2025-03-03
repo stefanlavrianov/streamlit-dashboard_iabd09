@@ -121,5 +121,5 @@ folium_static(m)
 # Se muestra un mensaje de bienvenida en la pantalla principal.
 #
 st.sidebar.markdown(f"👤 Usuario activo: **{nombre_usuario}**")
-st.success(f"¡Bienvenido, {nombre_usuario}! Esperamos que disfrutes del análisis.")
+st.success(f"¡Bienvenido, {nombre_usuario}! Esperamos que disfrutes del análisis de iabd09. ")
 
